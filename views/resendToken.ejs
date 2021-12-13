@@ -1,0 +1,14 @@
+<%- include("partials/header") -%>
+
+<div class="ui main text container segment">
+    <div class="ui huge header">Verify Your Email</div>
+    <form class="ui form" action="/resendToken" method="POST">
+        <div class="field">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="Email" required>
+        </div>
+        <button class="ui violet basic button">Get Token</button>
+    </form>
+</div>
+
+<%- include("partials/footer") -%>

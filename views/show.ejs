@@ -1,0 +1,27 @@
+<%- include("partials/header") -%>
+
+<div class="ui main text container segment">
+    <div class="ui huge header"><%= shoe.title %></div>
+    <div class="ui top attached">
+        <div class="item">
+            <img class="ui rounded centered image" src="<%= shoe.image %>">
+            <div class="content">
+               <strong> <em><%= shoe.created %>
+                <span class="submitted">Submitted By <%= shoe.author.name%></span></em></strong>
+            </div>
+            <div class="description"><p><%- shoe.body %></p></div>          
+        </div>
+    </div>  
+    <% if(userId == shoe.author.id){ %>
+        <div class="edit-delete">
+            <a class="ui orange basic button e" href="/shoes/<%= shoe._id %>/edit">Edit</a>
+            <form id="delete" action="/shoes/<%= shoe._id %>?_method=DELETE" method="POST">
+                <button class="ui red basic button">Delete</button>
+            </form> 
+        </div>
+    <%}%>
+    
+    
+</div>
+
+<%- include("partials/footer") -%>

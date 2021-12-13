@@ -1,0 +1,26 @@
+<%- include("partials/header") -%>
+
+<div class="ui main text container segment">
+    <div class="ui huge header">Login</div>
+    <form class="ui form" action="/login" method="POST">
+        <div class="field">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="Email" required>
+        </div>
+        <div class="field">
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Password" pattern=".{5,10}" required title="password must be between 5 to 10 character">
+        <p><div class="ui form">
+            <label>
+                <input name="remember" value="yes" class="ui form" type="checkbox"> Remember Me
+            </label>
+        </div></p>
+        <button class="ui violet basic button">Login</button>
+        <a href="/resendToken" class="resend">Resend Token</a>
+        <a href="/forgotpassword" class="forgot">Forgot Password</a>
+     
+    </form>
+</div>
+
+<%- include("partials/footer") -%>
+

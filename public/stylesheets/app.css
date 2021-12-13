@@ -1,0 +1,50 @@
+i.icon{
+    font-size: 2em;
+}
+
+#mainMargin{
+    margin-top: 7.0em;
+}
+
+#delete{
+    display: inline;
+}
+
+.ui.message:last-child{
+    margin-bottom: 50px;
+}
+
+.submitted{
+    float: right;
+}
+
+body{
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.06rem;
+}
+
+p{
+    line-height: 1.8rem;
+    font-size: 1.2rem;
+    word-spacing: 0.1rem;
+}
+
+.edit-delete{
+    margin-top: 20px;
+}
+
+img{
+    min-height: 150px;
+}
+
+.resend{
+    bottom: 0;
+    right: 0;
+    position: absolute;
+}
+
+.ui[class*="top attached"].segment{
+    box-shadow: 1px 1px rgb(230, 230, 235);
+    border-radius: 3px;
+}
+

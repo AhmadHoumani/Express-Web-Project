@@ -1,0 +1,18 @@
+<%- include("partials/header") -%>
+
+<div class="ui main text container segment">
+    <div class="ui huge header">Reset Password</div>
+    <form class="ui form" action="/reset/<%= email%>/<%= resetPasstoken%>"  method="POST">
+        <div class="field">
+            <label>New Password</label>
+            <input type="password" name="password" placeholder="New password" required>
+        </div>
+        <div class="field">
+            <label>Confirm Password</label>
+            <input type="password" name="confirm" placeholder="Confirm password" required>
+        </div>
+        <button class="ui violet basic button">Update Password</button>
+    </form>
+</div>
+
+<%- include("partials/footer") -%>

@@ -1,0 +1,65 @@
+<%- include("partials/header") -%>
+<input type='text' placeholder="Sneaker Search" id= 'search-box' onkeyup="sendData(this)">
+                        <section id = "searchResults">
+                        </section>
+                        <script>
+                            function sendData(e){
+                                const serachResult=document.getElementById("searchResults")
+                                // serachResult+=`<p></p>`
+                                let match=e.value.match(/^[a-zA-z]*/);
+                                let match2=e.value.match(/\s*/);
+                                if(match2[0]===e.value){
+                                    serachResult.innerHTML='';
+                                    return;
+                                }
+                                if (match[0]===e.value){
+                                fetch('getSN',{
+                                    method: 'POST',headers:{'Content-Type':'application/json'},
+                                    body: JSON.stringify({payload: e.value})
+                                })
+                                .then(res => res.json()).then(data => {
+                                    let payload = data.payload;
+                                    serachResult.innerHTML='';
+                                    if(payload.length < 1){
+                                        serachResult.innerHTML='<p>Sorry no results found</p>'
+                                        return;
+                                    }
+                                    payload.forEach((item,index)=>{
+                                        if(index>0)serachResult.innerHTML+='<hr>';
+                                        serachResult.innerHTML+=`<p>${item.title} </p>`
+                                    });
+                                    return;
+
+                                })
+                            }
+                            }
+                        </script>
+<div class="ui main text container">
+    <div class="ui huge header">Sneaker Store</div>
+    
+            <% shoes.forEach(function(shoe){ %>
+                <div class="ui top attached segment">
+                    <div class="ui divided items">
+                <div class="item">
+                    <div class="image"><img src="<%= shoe.image %>"></div>
+                    <div class="content">
+                        <a class="header" href="/shoes/<%= shoe._id %>"><h2><%= shoe.title %></h2></a>
+                        <div class="meta"><span><%= shoe.created %></span></div>
+                        <div class="description"><p><%- shoe.body.substring(0,100) %>...</p></div>
+                        <div class="extras">
+                            <a class="ui primary basic button" href="/shoes/<%= shoe._id %>">Read More</a>
+                            <a class="ui primary basic button" href="/shoes/<%= shoe._id %>">Add to Cart</a>
+
+                        </div>
+                    </div>
+                </div>
+            
+        </div>
+    </div>
+    <% }); %>
+
+
+</div>
+
+
+<%- include("partials/footer") -%>

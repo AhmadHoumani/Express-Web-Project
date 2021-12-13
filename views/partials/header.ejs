@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sneaker Stoke</title>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/app.css">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="ui fixed inverted menu">
+            <div class="ui container">
+                <div class="header item"><i class="code icon"></i><title>Sneaker Stoke</title>
+                </div>
+                <a class="item" href="/">Home</a>
+                <a class="item" href="/shoes/new">Add Sneaker</a>
+                <div class="right menu">
+                    <% if(!currentUser){ %>
+                        <a class="item" href="/login">Login</a>
+                        <a class="item" href="/register">SignUp</a>
+                   <% } else{ %>
+                    <!-- <form action="search" method="GET"class="item">
+                        <div>
+                            <input type="text" name="search" placeholder="Sneaker search..." class="item">
+
+                        </div> -->
+                        
+                        <!-- <input type='text' placeholder="Sneaker Search" id= 'search-box' onkeyup="sendData(this)">
+                        <section id = "searchResults">
+                        </section>
+                        <script>
+                            function sendData(e){
+                                const serachResult=document.getElementById("searchResults")
+                                // serachResult+=`<p></p>`
+                                let match=e.value.match(/^[a-zA-z]*/);
+                                let match2=e.value.match(/\s*/);
+                                if(match2[0]===e.value){
+                                    serachResult.innerHTML='';
+                                    return;
+                                }
+                                if (match[0]===e.value){
+                                fetch('getSN',{
+                                    method: 'POST',headers:{'Content-Type':'application/json'},
+                                    body: JSON.stringify({payload: e.value})
+                                })
+                                .then(res => res.json()).then(data => {
+                                    let payload = data.payload;
+                                    serachResult.innerHTML='';
+                                    if(payload.length < 1){
+                                        serachResult.innerHTML='<p>Sorry no results found</p>'
+                                        return;
+                                    }
+                                    payload.forEach((item,index)=>{
+                                        if(index>0)serachResult.innerHTML+='<hr>';
+                                        serachResult.innerHTML+=`<p>${item.title}</p> `
+                                    });
+                                    return;
+
+                                })
+                            }
+                            }
+                        </script> -->
+                    </form><a class="item" href="#"><%=currentUser%></a>
+                    <a class="item" href="/logout">Logout</a>
+                  <%  } %>
+
+                    
+                </div>
+            </div>
+        </div>
+        <div id="mainMargin">
+            <div class="ui container">
+                <% if(error && error.length > 0){ %>
+                    <div class="ui red message">
+                        <%= error %>
+                    </div>
+                <% } %>
+                <% if(success && success.length > 0){ %>
+                    <div class="ui olive message">
+                        <%= success %>
+                    </div>
+                <% } %>
+            </div>
+ 
